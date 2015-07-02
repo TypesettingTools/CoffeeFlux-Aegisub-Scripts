@@ -1,0 +1,36 @@
+{
+  "dependencyControlFeedFormatVersion": "0.2.0",
+  "name": "CoffeeFlux's Aegisub Scripts",
+  "description": "place where my bad scripts go",
+  "baseUrl": "https://github.com/CoffeeFlux/Aegisub-Scripts",
+  "fileBaseUrl": "https://raw.githubusercontent.com/CoffeeFlux/Aegisub-Scripts/@{channel}/@{namespace}",
+  "url": "@{baseUrl}",
+  "maintainer": "CoffeeFlux",
+  "macros": {
+    
+    "Flux.DialogSwapper": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "Dialog Swapper",
+      "description": "Perform dialog swap operations on a script",
+      "channels": {
+        "master": {
+          "version": "1.0.0",
+          "released": "2015-06-20",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "9F8874A8157C19E559E1C4A95F5D872ADCD0A9FD"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Initial upload"]
+      }
+    },
+    
+  }
+}
