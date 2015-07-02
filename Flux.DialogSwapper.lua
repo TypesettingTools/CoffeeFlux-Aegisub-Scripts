@@ -1,7 +1,7 @@
 script_name        = "Dialog Swapper"
 script_description = "Perform dialog swap operations on a script"
 script_author      = "CoffeeFlux" --Originally by Daiz, butchered by Fyurie
-script_version     = "1.0.0"
+script_version     = "1.0.1"
 script_namespace   = "Flux.DialogSwapper"
 
 local DependencyControl = require("l0.DependencyControl"){

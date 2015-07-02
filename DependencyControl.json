@@ -1,5 +1,5 @@
 {
-  "dependencyControlFeedFormatVersion": "0.2.0",
+  "dependencyControlFeedFormatVersion": "0.2.1",
   "name": "CoffeeFlux's Aegisub Scripts",
   "description": "striving to create scripts even dumber than torque's",
   "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
@@ -15,20 +15,21 @@
       "description": "Perform dialog swap operations on a script",
       "channels": {
         "master": {
-          "version": "1.0.0",
-          "released": "2015-06-20",
+          "version": "1.0.1",
+          "released": "2015-07-02",
           "default": true,
           "files": [
             {
               "name": ".lua",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "9F8874A8157C19E559E1C4A95F5D872ADCD0A9FD"
+              "sha1": "49105987E31BEE7993854BD2AAFC37DC74FB8DE4"
             }
           ]
         }
       },
       "changelog": {
-        "1.0.0": ["Initial upload"]
+        "1.0.0": ["Initial upload"],
+        "1.0.1": ["Fixed line endings"]
       }
     },
     
