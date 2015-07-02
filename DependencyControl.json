@@ -1,9 +1,9 @@
 {
   "dependencyControlFeedFormatVersion": "0.2.0",
   "name": "CoffeeFlux's Aegisub Scripts",
-  "description": "place where my bad scripts go",
-  "baseUrl": "https://github.com/CoffeeFlux/Aegisub-Scripts",
-  "fileBaseUrl": "https://raw.githubusercontent.com/CoffeeFlux/Aegisub-Scripts/@{channel}/@{namespace}",
+  "description": "striving to create scripts even dumber than torque's",
+  "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/@{channel}/@{namespace}",
   "url": "@{baseUrl}",
   "maintainer": "CoffeeFlux",
   "macros": {
