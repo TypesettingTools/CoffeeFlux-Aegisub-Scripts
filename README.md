@@ -49,8 +49,19 @@ The swap operation switches between two phrases. This is most commonly used in s
 
 The comment toggle operation is a special toggle that is used for commenting entire lines. It runs only on lines with the Effect field set to exactly `***`.
 
-Warning
+Warnings
 ------------
+
+**Valid Lines**
+
+To avoid swapping lines unintentionally and breaking things (like typesetting), lines will only be swapped when they include a prefix of either "-" or "_" followed by one of the following words: Main, Alt, Overlap.
+
+*Examples*
+
+Valid: Coffee_Main, Flux-Alt, _Overlap
+Invalid: Main, _FluxAlt, Overlap-
+
+**Invalid Text**
 
 Be very careful about swapping text that includes the delimeter as its starting character. 
 This, as a general rule, breaks things horribly, and is easy enough to avoid and enough of a pain to fix that I'm just leaving in this warning.
