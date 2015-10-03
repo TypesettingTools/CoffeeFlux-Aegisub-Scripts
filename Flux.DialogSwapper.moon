@@ -31,7 +31,7 @@ SwapPatterns = {
 }
 ValidLineStarters = "-_"
 ValidLineNames = {"Main", "Alt", "Overlap"}
--- Toggle line comment status if effect field matches "***"
+-- Toggle line comment status if effect field matches three times the delimiter ("***")
 CommentPattern = "^%" .. Delimeter .. "%".. Delimeter .. "%" .. Delimeter .. "$"
 
 ValidateLine = (Style) ->
