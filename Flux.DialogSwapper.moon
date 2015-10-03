@@ -4,7 +4,7 @@ export script_author      = "CoffeeFlux" --Originally by Daiz, butchered by Fyur
 export script_version     = "1.1.1"
 export script_namespace   = "Flux.DialogSwapper"
 
-require("l0.DependencyControl")
+require "l0.DependencyControl"
 VersionRecord = DependencyControl {
     url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.DialogSwapper.moon"
     feed: "https://raw.githubusercontent.com/TypesettingCartel/line0-Aegisub-Scripts/master/DependencyControl.json"
@@ -34,8 +34,8 @@ ValidLineNames = {"Main", "Alt", "Overlap"}
 CommentPattern = "^%" .. Delimeter .. "%".. Delimeter .. "%" .. Delimeter .. "$"
 
 ValidateLine = (Style) ->
-    for Name in ValidLineNames
-        if Style\match "[" .. ValidLineStarters .. "]" .. Name) then return true
+    for Name in *ValidLineNames
+        if Style\match "[" .. ValidLineStarters .. "]" .. Name then return true
     return false
 
 Replace = (Subs) ->
@@ -50,7 +50,7 @@ Replace = (Subs) ->
                 Line.comment = not Line.comment
 
             if ValidateLine Style
-                for Pair in ipairs SwapPatterns
+                for Pair in *SwapPatterns
                     Line.text = Line.Text\gsub Pair[1], Pair[2]
             Subs[LineNumber] = Line
 
