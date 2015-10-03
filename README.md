@@ -19,7 +19,7 @@ Requirements
 Installation
 ------------
 
- **From DepCtrl:**
+**From DepCtrl:**
 1. Ensure that depctrl is functional (easiest way is [line0's builds](files.line0.eu/builds/Aegisub/))
 2. Go to the toolbox, Install Script, locate Dialog Swapper and install it
 
