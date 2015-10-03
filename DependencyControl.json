@@ -30,7 +30,8 @@
       "changelog": {
         "1.0.0": ["Initial upload"],
         "1.0.1": ["Fixed line endings"],
-        "1.1.0": ["Rewritten for moonscript"]
+        "1.1.0": ["Rewritten for moonscript"],
+        "1.1.1": ["Mild pattern adjustments"]
       }
     },
     

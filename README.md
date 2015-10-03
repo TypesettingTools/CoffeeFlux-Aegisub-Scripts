@@ -1,7 +1,7 @@
 CoffeeFlux's Aegisub Scripts
 =======================
 
- 1. [Dialog Swapper](#nudge)
+ 1. [Dialog Swapper](#Dialog Swapper)
 
 ----------------------------------
 
@@ -9,7 +9,7 @@ CoffeeFlux's Aegisub Scripts
 Dialog Swapper
 ==========================
 
-Nudge is an automation script for Aegisub that lets you **create your own hotkeyable macros for common tag modifications** like nudging a line up and down, increasing the brightness of signs or cycling through a predefined set of blur states.
+Dialog Swapper is an automation script for Aegisub that lets you quickly swap between multiple lines of text.
 
 Requirements
 ------------
@@ -19,14 +19,43 @@ Requirements
 Installation
 ------------
 
-**From DepCtrl:**
-1. Ensure that depctrl is functional (easiest way is [line0's builds](files.line0.eu/builds/Aegisub/))
+1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
 2. Go to the toolbox, Install Script, locate Dialog Swapper and install it
-
-**From Source Repo:**
-1. Clone the repository and copy the desired scripts into your autoload directory
 
 Usage
 ------------
 
-soon(tm)
+Dialog Swapper offers three primary swap operations as well as a number of configuration options.
+
+**Toggle**
+
+The toggle operation comments or uncomments text. This is most commonly used in subs for honorifics.
+
+*Example*
+
+`foo{**-san}` becomes `foo{*}-san{*}`, 
+`foo{*}-san{*}` becomes `foo{**-san}`
+
+**Swap**
+
+The swap operation switches between two phrases. This is most commonly used in subs for localization.
+
+*Example*
+
+`{*}Foo Bar{*Bar Foo}` becomes `{*}Bar Foo{*Foo Bar}`,
+`{*}Bar Foo{*Foo Bar}` becomes `{*}Foo Bar{*Bar Foo}`
+
+**Comment Toggle**
+
+The comment toggle operation is a special toggle that is used for commenting entire lines. It runs only on lines with the Effect field set to exactly `***`.
+
+Warning
+------------
+
+Be very careful about swapping text that includes the delimeter as its starting character. 
+This, as a general rule, breaks things horribly, and is easy enough to avoid and enough of a pain to fix that I'm just leaving in this warning.
+
+Configuration
+------------
+
+Soon™

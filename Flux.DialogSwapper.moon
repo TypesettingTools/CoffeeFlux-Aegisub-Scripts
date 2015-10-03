@@ -1,7 +1,7 @@
 export script_name        = "Dialog Swapper"
 export script_description = "Perform text swapping operations on a script"
 export script_author      = "CoffeeFlux" --Originally by Daiz, butchered by Fyurie
-export script_version     = "1.1.0"
+export script_version     = "1.1.1"
 export script_namespace   = "Flux.DialogSwapper"
 
 require "l0.DependencyControl"
@@ -11,28 +11,29 @@ VersionRecord = DependencyControl {
     {}
 }
 
-Delimeter = "*"
+Delimeter = "%*" -- always escape this, must be a special char
+-- These are roundabout and initially confusing, but it's necessary to avoid unswapping
 SwapPatterns = {
-    -- Convert "{*}foo{*bar}" to "{*}bar{*foo}"
+    -- Convert "{*}foo{*bar}" to "{*}bar{*foo}", including {*}foo{*} to {*}{*foo}
     {
-        "{%" .. Delimeter .. "}([^{]*){%" .. Delimeter .."([^%}" .. Delimeter.. "]?[^}]*)}", 
-        "{%" .. Delimeter .. "}%2{%" .. Delimeter .. "%1}"
+        "{" .. Delimeter .. "}([^{]-){" .. Delimeter .."([^}]*)}",
+        "{" .. Delimeter .. "}%2{" .. Delimeter .. "%1}"
     },
-    -- Convert "foo{**-bar}" to "foo{*}-bar{*}"
+    -- Convert "{**bar}" to "{*}bar{*}"
     {
-        "{%" .. Delimeter .. "%" .. Delimeter .. "([^}]+)}",
-        "{%" .. Delimeter .. "}%1{%" .. Delimeter .. "}"
+        "{" .. Delimeter .. Delimeter .. "([^}]+)}",
+        "{" .. Delimeter .. "}%1{" .. Delimeter .. "}"
     },
-    -- Convert "foo{*}{*-bar}" to "foo{**-bar}"
+    -- Convert "{*}{*bar}" to "{**bar}"
     {
-        "{%" .. Delimeter .. "}{%".. Delimeter,
-        "{%" .. Delimeter .. "%".. Delimeter
+        "{" .. Delimeter .. "}{".. Delimeter,
+        "{" .. Delimeter .. Delimeter
     }
 }
 ValidLineStarters = "-_"
 ValidLineNames = {"Main", "Alt", "Overlap"}
--- Toggle line comment status if effect field matches three times the delimiter ("***")
-CommentPattern = "^%" .. Delimeter .. "%".. Delimeter .. "%" .. Delimeter .. "$"
+-- Toggle line comment status if effect field matches three times the delimiter
+CommentPattern = "^" .. Delimeter .. Delimeter .. Delimeter .. "$"
 
 ValidateLine = (Style) ->
     for Name in *ValidLineNames
@@ -52,7 +53,7 @@ Replace = (Subs) ->
 
             if ValidateLine Style
                 for Pair in *SwapPatterns
-                    Line.text = Line.Text\gsub Pair[1], Pair[2]
+                    Line.text = Line.text\gsub Pair[1], Pair[2]
             Subs[LineNumber] = Line
 
 Swap = (Subs, Selected, Active) ->
