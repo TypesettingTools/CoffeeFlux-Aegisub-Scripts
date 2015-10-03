@@ -59,6 +59,7 @@ To avoid swapping lines unintentionally and breaking things (like typesetting), 
 *Examples*
 
 Valid: Coffee_Main, Flux-Alt, _Overlap
+
 Invalid: Main, _FluxAlt, Overlap-
 
 **Invalid Text**
