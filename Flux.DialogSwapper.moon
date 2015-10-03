@@ -11,6 +11,7 @@ VersionRecord = DependencyControl {
     {}
 }
 
+Delimeter = "*"
 SwapPatterns = {
     -- Convert "{*}foo{*bar}" to "{*}bar{*foo}"
     {
