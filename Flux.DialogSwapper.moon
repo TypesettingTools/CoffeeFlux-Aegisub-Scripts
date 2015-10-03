@@ -1,7 +1,7 @@
 export script_name        = "Dialog Swapper"
 export script_description = "Perform text swapping operations on a script"
 export script_author      = "CoffeeFlux" --Originally by Daiz, butchered by Fyurie
-export script_version     = "1.1.1"
+export script_version     = "1.1.0"
 export script_namespace   = "Flux.DialogSwapper"
 
 require "l0.DependencyControl"
