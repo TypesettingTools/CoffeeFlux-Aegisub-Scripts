@@ -12,17 +12,17 @@
       "url": "@{baseUrl}#@{namespace}",
       "author": "CoffeeFlux",
       "name": "Dialog Swapper",
-      "description": "Perform dialog swap operations on a script",
+      "description": "Perform text swapping operations on a script",
       "channels": {
         "master": {
-          "version": "1.0.1",
-          "released": "2015-07-02",
+          "version": "1.1.1",
+          "released": "2015-10-03",
           "default": true,
           "files": [
             {
-              "name": ".lua",
+              "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "49105987E31BEE7993854BD2AAFC37DC74FB8DE4"
+              "sha1": "680CAFC8201322B4AB7CC2499DEA6335F9C562DB"
             }
           ]
         }
