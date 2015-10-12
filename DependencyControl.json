@@ -15,14 +15,14 @@
       "description": "Perform text swapping operations on a script",
       "channels": {
         "master": {
-          "version": "1.1.3",
-          "released": "2015-10-03",
+          "version": "1.2.0",
+          "released": "2015-10-12",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "554E51F1F1E4CC9031FD2BAF23862680D4DABB48"
+              "sha1": "64A0A5A1398B55C78FE69F930DD6E77DD8F7AD6C"
             }
           ]
         }
@@ -33,7 +33,8 @@
         "1.1.0": ["Rewritten for moonscript"],
         "1.1.1": ["Mild pattern adjustments"],
         "1.1.2": ["Fixed silly DepCtrl usage error"],
-        "1.1.3": ["Yet another dumb issue"]
+        "1.1.3": ["Yet another dumb issue"],
+        "1.2.0": ["Added configuration dialog"]
       }
     },
     

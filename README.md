@@ -38,7 +38,7 @@ The toggle operation comments or uncomments text. This is most commonly used in 
 
 **Swap**
 
-The swap operation switches between two phrases. This is most commonly used in subs for localization.
+The swap operation switches between two phrases. This is most commonly used in subs for localization decisions like name order.
 
 *Example*
 
@@ -70,4 +70,30 @@ This, as a general rule, breaks things horribly, and is easy enough to avoid and
 Configuration
 ------------
 
-Soon™
+The above documentation applies to the default settings. Lots of stuff is configurable. I have no input validation, so don't be retarded or things will break. Unicode may also break things.
+
+**Delimeter**
+
+The delimeter is the character used in the brackets for the swap operation. Can only be one character, and it can't be alphanumeric.
+
+Default: *
+
+**Verify Style**
+
+This toggles whether or not the swap operation will only apply to lines with styles that meet the chosen guidelines. Turning it off means your script will run on all lines, regardless of style.
+
+Default: true
+
+**Line Starters**
+
+The line starters are the characters used as a prefix to identify valid line styles. This should be a list of non-alphanumeric characters separated by commas.
+Setting this to an empty string will break things. Patches Welcome.
+
+Default: -,_
+
+**Line Names**
+
+The line names are the rest of the name that is checked for when identifying valid lines. This should be a list of alphanumeric words separated by commas. 
+Whitespace is not stripped and will be counted as part of the name.
+
+Default: Main,Alt,Overlap
