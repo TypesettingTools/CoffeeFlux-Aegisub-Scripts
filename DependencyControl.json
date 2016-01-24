@@ -1,5 +1,5 @@
 {
-  "dependencyControlFeedFormatVersion": "0.3.0",
+  "dependencyControlFeedFormatVersion": "0.3.1",
   "name": "CoffeeFlux's Aegisub Scripts",
   "description": "striving to create scripts even dumber than torque's",
   "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
@@ -52,7 +52,7 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "6E56FCD75791411753EE22D29D42198FE24A5D325"
+              "sha1": "E56FCD75791411753EE22D29D42198FE24A5D325"
             }
           ]
         }
