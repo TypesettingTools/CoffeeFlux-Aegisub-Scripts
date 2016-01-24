@@ -40,7 +40,7 @@
 
     "Flux.TitleCase": {
       "url": "@{baseUrl}#@{namespace}",
-      "author": "CoffeeFlux",
+      "author": "tophf",
       "name": "Title Case",
       "description": "Applies English Title Case to selected lines",
       "channels": {
@@ -60,6 +60,31 @@
       "changelog": {
         "1.1.0": ["Added to DepCtrl"],
         "1.1.1": ["Quick bugfix"]
+      }
+    },
+
+    "Flux.Selegator": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "tophf",
+      "name": "Selegator",
+      "description": "Select/navigate in the subtitle grid",
+      "channels": {
+        "master": {
+          "version": "1.1.1",
+          "released": "2016-01-24",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "D8F53C56D518CE96D1B3B987385A1915DA6A09D3"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.1.0": ["Added to DepCtrl"],
+        "1.1.1": ["Mild cleanup"]
       }
     },
     
