@@ -1,8 +1,8 @@
 export script_name        = 'JumpScroll'
 export script_description = 'Save/load subtitle grid scrollbar position (MSWindows only)'
-export script_author      = "tophf"
-export script_version     = "1.1.0"
-export script_namespace   = "Flux.JumpScroll"
+export script_author      = 'tophf'
+export script_version     = '1.1.0'
+export script_namespace   = 'Flux.JumpScroll'
 
 DependencyControl = require("l0.DependencyControl") {
     url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"

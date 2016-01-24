@@ -1,8 +1,8 @@
 export script_name        = 'Selegator'
 export script_description = 'Select/navigate in the subtitle grid'
-export script_author      = "tophf"
-export script_version     = "1.1.0"
-export script_namespace   = "Flux.Selegator"
+export script_author      = 'tophf'
+export script_version     = '1.1.0'
+export script_namespace   = 'Flux.Selegator'
 
 DependencyControl = require("l0.DependencyControl") {
     url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"

@@ -1,8 +1,8 @@
 export script_name        = 'Title Case'
 export script_description = 'Applies English Title Case to selected lines'
-export script_author      = "tophf"
-export script_version     = "1.1.0"
-export script_namespace   = "Flux.DialogSwapper"
+export script_author      = 'tophf'
+export script_version     = '1.1.0'
+export script_namespace   = 'Flux.DialogSwapper'
 
 DependencyControl = require("l0.DependencyControl") {
     url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"
@@ -10,7 +10,6 @@ DependencyControl = require("l0.DependencyControl") {
     {}
 }
 
-local *
 re = require 'aegisub.re'
 
 lcase = ' a an and as at but by en for if in of on or the to v v. via vs vs. '
