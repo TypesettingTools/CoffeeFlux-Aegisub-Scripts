@@ -1,5 +1,14 @@
-export script_name = 'Selegator'
+export script_name        = 'Selegator'
 export script_description = 'Select/navigate in the subtitle grid'
+export script_author      = "tophf"
+export script_version     = "1.1.0"
+export script_namespace   = "Flux.Selegator"
+
+DependencyControl = require("l0.DependencyControl") {
+    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"
+    feed: "https://raw.githubusercontent.com/TypesettingCartel/line0-Aegisub-Scripts/master/DependencyControl.json"
+    {}
+}
 
 aegisub.register_macro script_name..'/Current style/select all', script_description, (subs, sel, act) ->
     lookforstyle = subs[act].style

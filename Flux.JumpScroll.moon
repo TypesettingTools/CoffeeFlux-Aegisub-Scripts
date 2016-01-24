@@ -1,5 +1,14 @@
-export script_name = 'JumpScroll'
+export script_name        = 'JumpScroll'
 export script_description = 'Save/load subtitle grid scrollbar position (MSWindows only)'
+export script_author      = "tophf"
+export script_version     = "1.1.0"
+export script_namespace   = "Flux.JumpScroll"
+
+DependencyControl = require("l0.DependencyControl") {
+    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"
+    feed: "https://raw.githubusercontent.com/TypesettingCartel/line0-Aegisub-Scripts/master/DependencyControl.json"
+    {}
+}
 
 ok, ffi = pcall require, 'ffi'
 return if not ok or jit.os != 'Windows'

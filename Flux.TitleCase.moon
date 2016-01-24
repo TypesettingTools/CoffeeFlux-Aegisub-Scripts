@@ -1,5 +1,14 @@
-export script_name = 'Title Case'
+export script_name        = 'Title Case'
 export script_description = 'Applies English Title Case to selected lines'
+export script_author      = "tophf"
+export script_version     = "1.1.0"
+export script_namespace   = "Flux.DialogSwapper"
+
+DependencyControl = require("l0.DependencyControl") {
+    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"
+    feed: "https://raw.githubusercontent.com/TypesettingCartel/line0-Aegisub-Scripts/master/DependencyControl.json"
+    {}
+}
 
 local *
 re = require 'aegisub.re'
