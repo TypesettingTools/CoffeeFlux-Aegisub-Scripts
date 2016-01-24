@@ -1,5 +1,5 @@
 {
-  "dependencyControlFeedFormatVersion": "0.2.1",
+  "dependencyControlFeedFormatVersion": "0.3.0",
   "name": "CoffeeFlux's Aegisub Scripts",
   "description": "striving to create scripts even dumber than torque's",
   "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
@@ -35,6 +35,31 @@
         "1.1.2": ["Fixed silly DepCtrl usage error"],
         "1.1.3": ["Yet another dumb issue"],
         "1.2.0": ["Added configuration dialog"]
+      }
+    },
+
+    "Flux.TitleCase": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "Title Case",
+      "description": "Applies English Title Case to selected lines",
+      "channels": {
+        "master": {
+          "version": "1.1.1",
+          "released": "2016-01-24",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "6E56FCD75791411753EE22D29D42198FE24A5D325"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.1.0": ["Added to DepCtrl"],
+        "1.1.1": ["Quick bugfix"]
       }
     },
     
