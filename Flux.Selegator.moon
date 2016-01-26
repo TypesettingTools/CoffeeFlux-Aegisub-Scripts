@@ -1,7 +1,7 @@
 export script_name        = 'Selegator'
 export script_description = 'Select/navigate in the subtitle grid'
 export script_author      = 'tophf'
-export script_version     = '1.1.1'
+export script_version     = '1.1.2'
 export script_namespace   = 'Flux.Selegator'
 
 DependencyControl = require("l0.DependencyControl") {
@@ -63,13 +63,13 @@ UntilEnd = (subs, sel, act) ->
 	[i for i = act,#subs when subs[i].class=='dialogue']
 
 DependencyControl\registerMacros {
-	{ 'Current Style/Select All', '', SelectAll },
-	{ 'Current Style/Previous', '', Previous },
-	{ 'Current Style/Next', '', Next },
-	{ 'Current Style/First In Block', '', FirstInBlock },
-	{ 'Current Style/Last In Block', '', LastInBlock },
-	{ 'Current Style/Select Block', '', SelectBlock },
+	{ 'Current Style/Select All', '', SelectAll }
+	{ 'Current Style/Previous', '', Previous }
+	{ 'Current Style/Next', '', Next }
+	{ 'Current Style/First In Block', '', FirstInBlock }
+	{ 'Current Style/Last In Block', '', LastInBlock }
+	{ 'Current Style/Select Block', '', SelectBlock }
 
-	{ 'Select Until Start', '', UntilStart },
+	{ 'Select Until Start', '', UntilStart }
 	{ 'Select Until End', '', UntilEnd }
 }
