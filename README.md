@@ -1,9 +1,9 @@
 CoffeeFlux's Aegisub Scripts
 =======================
 
- 1. [Dialog Swapper](#Dialog Swapper)
- 2. [Title Case](#Title Case)
- 3. [Selegator](#Selegator)
+ 1. [Dialog Swapper](#dialog-swapper)
+ 2. [Title Case](#title-case)
+ 3. [Selegator](#selegator)
 
 ----------------------------------
 
