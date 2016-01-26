@@ -2,6 +2,8 @@ CoffeeFlux's Aegisub Scripts
 =======================
 
  1. [Dialog Swapper](#Dialog Swapper)
+ 2. [Title Case](#Title Case)
+ 3. [Selegator](#Selegator)
 
 ----------------------------------
 
@@ -10,11 +12,6 @@ Dialog Swapper
 ==========================
 
 Dialog Swapper is an automation script for Aegisub that lets you quickly swap between multiple lines of text.
-
-Requirements
-------------
-- Aegisub 3.2.0+
-- [Dependency Control](https://github.com/TypesettingTools/DependencyControl) 0.5.3+
 
 Installation
 ------------
@@ -97,3 +94,50 @@ The line names are the rest of the name that is checked for when identifying val
 Whitespace is not stripped and will be counted as part of the name.
 
 Default: Main,Alt,Overlap
+
+
+Title Case
+==========================
+
+Applies English Title Case (maintains lower case on prepositions and other auxiliary words) to the selected lines.
+
+Installation
+------------
+
+1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
+2. Go to the toolbox, Install Script, locate Title Case and install it
+
+Usage
+------------
+
+Select the relevant lines and run the script. Not too difficult.
+
+
+Selegator
+==========================
+
+Select/navigate in the subtitle grid.
+
+Installation
+------------
+
+1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
+2. Go to the toolbox, Install Script, locate Title Case and install it
+
+Usage
+------------
+
+These are intended to be bound as hotkeys to speed up someone's workflow.
+
+Options are as follows:
+
+* Current Style related:
+ * **Current Style/Select All** - select all lines with the same style as the current line
+ * **Current Style/Previous** - go to previous line with the same style as the current line
+ * **Current Style/Next** - go to next line with the same style as the current line
+ * **Current Style/First in Block** - go to the first line in current block of lines with the same style
+ * **Current Style/Last in Block** - go to the last line in current block of lines with the same style
+ * **Current Style/Select Block** - select all lines in current block of lines with the same style
+* **Select Until Start** - unlike built-in Shift-Home, it preserves the active line
+* **Select Until End** - unlike built-in Shift-End, it preserves the active line
+
