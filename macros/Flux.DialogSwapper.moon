@@ -1,12 +1,12 @@
 export script_name        = "Dialog Swapper"
 export script_description = "Perform text swapping operations on a script"
 export script_author      = "CoffeeFlux"
-export script_version     = "1.2.0"
+export script_version     = "1.2.1"
 export script_namespace   = "Flux.DialogSwapper"
 
 DependencyControl = require("l0.DependencyControl") {
     url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.DialogSwapper.moon"
-    feed: "https://raw.githubusercontent.com/TypesettingCartel/line0-Aegisub-Scripts/master/DependencyControl.json"
+    feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
     {}
 }
 
