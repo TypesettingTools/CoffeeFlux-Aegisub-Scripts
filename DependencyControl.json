@@ -100,7 +100,30 @@
 
   "modules": {
 
-
+    "Flux.ScrollHandler": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "ScrollHandler",
+      "description": "Library allowing for control over scrolling on both Windows and OSX",
+      "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.0.0",
+          "released": "2016-01-27",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "E512491548B135D2B5A0ED408B2AC03998C5E672"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Module creation"]
+      }
+    }
 
   }
 }
