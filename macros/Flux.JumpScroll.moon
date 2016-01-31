@@ -15,11 +15,12 @@ DependencyControl = require("l0.DependencyControl") {
 ScrollHandler = rec\requireModules!!
 
 macroLength = 3
-Macros = {}
+macros = {}
 
 for i = 1, macroLength
-	Macros[#Macros + 1] = {'Save/' .. i, '', -> ScrollHandler\savePos i}
+	macros[#macros + 1] = {'Save/' .. i, '', -> ScrollHandler\savePos i}
 
 for i = 1, macroLength
-	Macros[#Macros + 1] = {'Load/' .. i, '', -> ScrollHandler\loadPos i}
+	macros[#macros + 1] = {'Load/' .. i, '', -> ScrollHandler\loadPos i}
 
+DependencyControl\registerMacros macros
