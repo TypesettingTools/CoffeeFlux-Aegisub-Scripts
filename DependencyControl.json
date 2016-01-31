@@ -1,5 +1,5 @@
 {
-  "dependencyControlFeedFormatVersion": "0.3.3",
+  "dependencyControlFeedFormatVersion": "0.2.0",
   "name": "CoffeeFlux's Aegisub Scripts",
   "description": "striving to create scripts even dumber than torque's",
   "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
@@ -104,18 +104,23 @@
       "url": "@{baseUrl}#@{namespace}",
       "author": "CoffeeFlux",
       "name": "ScrollHandler",
-      "description": "Library allowing for control over scrolling on both Windows and OSX",
+      "description": "Library to store and load scrollbar positions on Windows",
       "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespace}",
       "channels": {
         "master": {
           "version": "1.0.0",
-          "released": "2016-01-27",
+          "released": "2016-01-31",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
               "sha1": "E512491548B135D2B5A0ED408B2AC03998C5E672"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "ffi"
             }
           ]
         }
