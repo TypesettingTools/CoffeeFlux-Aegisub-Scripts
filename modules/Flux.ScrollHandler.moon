@@ -5,7 +5,7 @@ export script_version     = '1.0.0'
 export script_namespace   = 'Flux.ScrollHandler'
 
 DependencyControl = require("l0.DependencyControl") {
-    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/Flux.TitleCase.moon"
+    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/modules/Flux.ScrollHandler.moon"
     feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
     {
     	"ffi"
