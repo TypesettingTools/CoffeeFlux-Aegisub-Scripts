@@ -1,5 +1,5 @@
 export script_name        = 'ScrollHandler'
-export script_description = 'Library to store and load scrollbar positions on Windows'
+export script_description = 'Library to save and load subtitle grid scrollbar positions on Windows'
 export script_author      = 'CoffeeFlux'
 export script_version     = '1.0.0'
 export script_namespace   = 'Flux.ScrollHandler'
@@ -48,12 +48,12 @@ class ScrollHandler
 			@handle.ScrollBar = ffi.C.FindWindowExA @handle.SubsGrid, 0, 0, 0
 		@handle.App != 0
 
-	saveScrollPos: (key) =>
+	savePos: (key) =>
 		return unless @getHandle!
 		@scrollPositions[key] = tonumber ffi.C.SendMessageA @handle.ScrollBar, msgs.SBM_GETPOS, 0, 0
 		-- aegisub.update_statusbar 'Jumpscroll %s: saved position %d'\format key, @scrollpos[key]
 
-	loadScrollPos: (key) =>
+	loadPos: (key) =>
 		return unless @scrollPositions[key] and @getHandle!
 		ffi.C.SendMessageA @handle.SubsGrid, msgs.WM_VSCROLL, msgs.SB_THUMBPOSITION, @handle.ScrollBar
 		ffi.C.SendMessageA @handle.ScrollBar, msgs.SBM_SETPOS, @scrollPositions[key], 0
