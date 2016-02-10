@@ -12,7 +12,7 @@ DependencyControl = require("l0.DependencyControl") {
     }
 }
 
-ScrollHandler = rec\requireModules!!
+ScrollHandler = DependencyControl\requireModules!!
 
 macroLength = 3
 macros = {}
