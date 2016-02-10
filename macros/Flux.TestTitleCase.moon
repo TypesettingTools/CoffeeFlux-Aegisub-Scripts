@@ -20,6 +20,7 @@ re, LineCollection, ASS = DependencyControl\requireModules!
 
 lowerCaseWords = {'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor', 'via', 'vs'}
 
+-- I'm sorry tp7 ;_;
 firstWord = re.compile '(?:^|(?:[?.;!。~]))(?:\s|\\N|\\n|{\w+})+[¿¡]?(\p{L})'
 everyWord = re.compile '(?:\\N|\\n|\s|})(\p{L})'
 
