@@ -24,13 +24,16 @@ settings = ConfigHandler.c.Settings
 dialog = {
 	{
 		class: 'label'
-		label: 'Macro Length'
+		label: 'Macro Length:'
 		x: 0
 		y: 0
 	}
 	{
-		class: 'edit'
+		class: 'intedit'
 		name: 'macroLength'
+		value: settings.macroLength
+		min: 1
+		max: 10 -- arbitrary value, but one has to exist to work
 		x: 2
 		y: 0
 	}
@@ -38,8 +41,8 @@ dialog = {
 
 config = ->
 	button, results = aegisub.dialog.display dialog
-	unless button == 'Cancel'
-		Settings.macroLength = results.macroLength
+	unless button == false
+		settings.macroLength = results.macroLength
 		ConfigHandler\write!
 
 macroLength = settings.macroLength
