@@ -1,7 +1,7 @@
 export script_name        = "Dialog Swapper"
 export script_description = "Perform text swapping operations on a script"
 export script_author      = "CoffeeFlux"
-export script_version     = "1.2.2"
+export script_version     = "1.2.3"
 export script_namespace   = "Flux.DialogSwapper"
 
 DependencyControl = require("l0.DependencyControl") {
@@ -156,7 +156,7 @@ Swap = (Subs, Selected, Active) ->
 
 Config = ->
     Button, Results = aegisub.dialog.display Dialog
-    unless Button == "Cancel"
+    unless Button == false
         Settings.Delimeter    = Results.Delimeter
         Settings.VerifyStyle  = Results.VerifyStyle
         Settings.LineStarters = Results.LineStarters
