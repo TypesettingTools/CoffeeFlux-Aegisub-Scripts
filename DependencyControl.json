@@ -23,7 +23,7 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "BBE0965623C3E91E6C203C2F359344DE9D4C36C1"
+              "sha1": "2ED3BB4617AECF39A81E4549A06D1684B96DCC0A"
             }
           ]
         }
@@ -56,12 +56,13 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "370A23C10283B525479C6B1D5B220ABDCF027AF0"
+              "sha1": "14B92AF55E70BAC60825FF3BE169BB246BE02430"
             }
           ]
         }
       },
       "changelog": {
+        "1.3.1": ["Significant structural changes"],
         "1.1.3": ["Fixed feed error"],
         "1.1.2": ["Fixed namespace"],
         "1.1.1": ["Quick bugfix"],
@@ -84,7 +85,7 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "3EF7DBEF0390F96DFAB20C5083073E0745FB9B22"
+              "sha1": "F2784940129D5D59E160EF5233D6BA71A19DF397"
             }
           ]
         }
@@ -107,13 +108,13 @@
       "channels": {
         "master": {
           "version": "1.0.0",
-          "released": "2016-01-31",
+          "released": "2016-02-10",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "3EF7DBEF0390F96DFAB20C5083073E0745FB9B22"
+              "sha1": "5871683CA720327CE14CC38643186F52FB3B6EC8"
             }
           ]
         }
