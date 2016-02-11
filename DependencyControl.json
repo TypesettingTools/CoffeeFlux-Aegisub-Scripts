@@ -16,19 +16,20 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.2.2",
-          "released": "2016-01-31",
+          "version": "1.2.3",
+          "released": "2016-02-11",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "2ED3BB4617AECF39A81E4549A06D1684B96DCC0A"
+              "sha1": "23BB85EA6E887D840E853034868076E5E35E4F00"
             }
           ]
         }
       },
       "changelog": {
+        "1.2.3": ["Fixed old dialog bug"],
         "1.2.2": ["Updated to reflect new directory structure"],
         "1.2.1": ["Fixed feed error"],
         "1.2.0": ["Added configuration dialog"],
@@ -107,19 +108,21 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.0.0",
+          "version": "2.1.1",
           "released": "2016-02-10",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "5871683CA720327CE14CC38643186F52FB3B6EC8"
+              "sha1": "DC9D2971BCBBCE86054BC06D0A01C1C958640BBC"
             }
           ]
         }
       },
       "changelog": {
+        "2.1.0": ["Added configuration"],
+        "2.0.0": ["Rewritten to use the corresponding module"],
         "1.0.0": ["Script creation"]
       }
     }
