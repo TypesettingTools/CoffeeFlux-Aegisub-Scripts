@@ -4,6 +4,7 @@ CoffeeFlux's Aegisub Scripts
  1. [Dialog Swapper](#dialog-swapper)
  2. [Title Case](#title-case)
  3. [Selegator](#selegator)
+ 4. [JumpScroll](#jumpscroll)
 
 ----------------------------------
 
@@ -141,3 +142,25 @@ Options are as follows:
 * **Select Until Start** - unlike built-in Shift-Home, it preserves the active line
 * **Select Until End** - unlike built-in Shift-End, it preserves the active line
 
+
+JumpScroll
+==========================
+
+Saves/loads subtitle grid scrollbar position.
+
+Installation
+------------
+
+1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
+2. Make sure you're running at least Windows 7, either 32-bit or 64-bit
+3. Go to the toolbox, Install Script, locate JumpScroll and install it
+
+Usage
+------------
+
+These are intended to be bound as hotkeys to speed up someone's workflow. The saves are currently session-only. By default three save slots are created.
+
+Configuration
+------------
+
+Soon(tm)
