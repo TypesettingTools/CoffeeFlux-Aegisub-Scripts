@@ -163,4 +163,5 @@ These are intended to be bound as hotkeys to speed up someone's workflow. The sa
 Configuration
 ------------
 
-Soon(tm)
+The Macro Length parameter determines how many save slots will be created when the script is started up. 
+**After changing this setting, you must restart your automation directory for it to take effect.**
