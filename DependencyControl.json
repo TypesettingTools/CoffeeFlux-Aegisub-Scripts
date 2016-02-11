@@ -3,7 +3,7 @@
   "name": "CoffeeFlux's Aegisub Scripts",
   "description": "striving to create scripts even dumber than torque's",
   "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
-  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/@{channel}/@{namespace}",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/@{channel}",
   "url": "@{baseUrl}",
   "maintainer": "CoffeeFlux",
   "macros": {
