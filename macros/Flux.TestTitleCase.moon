@@ -10,13 +10,14 @@ DependencyControl = require("l0.DependencyControl") {
     {
         "aegisub.re",
         {"a-mo.LineCollection", version: "1.1.4", url: "https://github.com/TypesettingTools/Aegisub-Motion",
-         feed: "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"},
+         feed: "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"}
         {"l0.ASSFoundation", version: "0.3.3", url: "https://github.com/TypesettingTools/ASSFoundation",
          feed: "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"}
+        "unicode"
     }
 }
 
-re, LineCollection, ASS = DependencyControl\requireModules!
+re, LineCollection, ASSFoundation, unicode = DependencyControl\requireModules!
 
 lowerCaseWords = {'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor', 'via', 'vs'}
 
@@ -26,7 +27,7 @@ everyWord = re.compile '(?:\\[Nnh]|\s|})(\p{L})'
 
 titleCase = (sub, sel) ->
     lines = LineCollection (lines, line, i) ->
-        data = ASS\parse line
+        data = ASSFoundation\parse line
         upper = (section) ->
             -- Set every word to uppercase
             section.value = everyWord\sub section.value, (str) ->
@@ -39,7 +40,7 @@ titleCase = (sub, sel) ->
                 return unicode.to_upper_case str
             -- Set the first letter of the sentence to upppercase
             section.value = unicode.to_upper_case(string.sub(section.value, 1, 1)) .. string.sub(section.value, 2)
-        data\callback upper, ASS.Section.Text
+        data\callback upper, ASSFoundation.Section.Text
         data\commit!
     lines\replaceLines!
 
