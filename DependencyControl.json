@@ -60,7 +60,16 @@
               "url": "@{fileBaseUrl}@{fileName}",
               "sha1": "987FC1507D63059DFBF54C3AE162367A79A7977B"
             }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "aegisub.re"
+            },
+            {
+              "moduleName": "unicode"
+            }
           ]
+
         }
       },
       "changelog": {
@@ -122,7 +131,17 @@
               "url": "@{fileBaseUrl}@{fileName}",
               "sha1": "59ECC92F208E9B08E51D560C2A8D3963FBE55319"
             }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "Flux.ScrollHandler",
+              "name": "ScrollHandler",
+              "url": "@{baseUrl}",
+              "version": "1.0.0",
+              "feed": "@{feed:Flux}"
+            }
           ]
+
         }
       },
       "changelog": {
