@@ -1,13 +1,13 @@
-DependencyControl = require("l0.DependencyControl") {
-	name: "ScrollHandler"
-	description: "Library to save and load subtitle grid scrollbar positions on Windows"
-	author: "CoffeeFlux"
-	version: "1.0.0"
-	moduleName: "Flux.ScrollHandler"
-    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/modules/Flux.ScrollHandler.moon"
-    feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+DependencyControl = require('l0.DependencyControl') {
+	name: 'ScrollHandler'
+	description: 'Library to save and load subtitle grid scrollbar positions on Windows'
+	author: 'CoffeeFlux'
+	version: '1.0.1'
+	moduleName: 'Flux.ScrollHandler'
+    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/modules/Flux.ScrollHandler.moon'
+    feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {
-    	"ffi"
+    	'ffi'
     }
 }
 

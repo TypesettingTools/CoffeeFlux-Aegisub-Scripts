@@ -1,26 +1,35 @@
-export script_name        = "Dialog Swapper"
-export script_description = "Perform text swapping operations on a script"
-export script_author      = "CoffeeFlux"
-export script_version     = "1.2.3"
-export script_namespace   = "Flux.DialogSwapper"
+export script_name        = 'Dialog Swapper'
+export script_description = 'Perform text swapping operations on a script'
+export script_author      = 'CoffeeFlux'
+export script_version     = '1.3.0'
+export script_namespace   = 'Flux.DialogSwapper'
 
-DependencyControl = require("l0.DependencyControl") {
-    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.DialogSwapper.moon"
-    feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+DependencyControl = require('l0.DependencyControl') {
+    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.DialogSwapper.moon'
+    feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {}
 }
 
 ConfigHandler = DependencyControl\getConfigHandler {
-    Settings: {
-        Delimeter: "*"
-        VerifyStyle: true
-        LineStarters: "-,_"
-        LineNames: "Main,Alt,Overlap"
+    settings: {
+        delimeter: "*"
+        verifyStyle: true
+        lineStarters: "-,_"
+        lineNames: "Main,Alt,Overlap"
     }
 }
-Settings = ConfigHandler.c.Settings
+-- adjust for change in coding conventions
+if ConfigHandler.c.Settings
+    ConfigHandler.c.settings = {}
+    ConfigHandler.c.settings.delimeter = ConfigHandler.c.Settings.Delimeter
+    ConfigHandler.c.settings.verifyStyle = ConfigHandler.c.Settings.VerifyStyle
+    ConfigHandler.c.settings.lineStarters = ConfigHandler.c.Settings.LineStarters
+    ConfigHandler.c.settings.lineNames = ConfigHandler.c.Settings.LineNames
+    ConfigHandler.c.Settings = nil
+    ConfigHandler\write!
+settings = ConfigHandler.c.settings
 
-Dialog = {
+dialog = {
     {
         class: "label"
         label: "Delimeter:"
@@ -29,8 +38,8 @@ Dialog = {
     }
     {
         class: "edit"
-        name: "Delimeter"
-        text: "*"
+        name: "delimeter"
+        text: settings.delimeter
         x: 2
         y: 0
     }
@@ -42,8 +51,8 @@ Dialog = {
     }
     {
         class: "checkbox"
-        name: "VerifyStyle"
-        value: true
+        name: "verifyStyle"
+        value: settings.verifyStyle
         x: 2
         y: 1
     }
@@ -55,8 +64,8 @@ Dialog = {
     }
     {
         class: "edit"
-        name: "LineStarters"
-        text: "-,_"
+        name: "lineStarters"
+        text: settings.lineStarters
         x: 2
         y: 2
     }
@@ -68,107 +77,125 @@ Dialog = {
     }
     {
         class: "edit"
-        name: "LineNames"
-        text: "Main,Alt,Overlap"
+        name: "lineNames"
+        text: settings.lineNames
         x: 2
         y: 3
     }
 }
 
-Delimeter = "%*"
+-- BELOW VARIABLES ARE HARD-CODED TO DEFAULT VALUES, AND THUS ARE REPLACED BEFORE REGISTRATION
+delimeter = "%*"
 -- These are roundabout and initially confusing, but it's necessary to avoid unswapping
-SwapPatterns = {
+swapPatterns = {
     -- Convert "{*}foo{*bar}" to "{*}bar{*foo}", including {*}foo{*} to {*}{*foo}
     {
-        "{" .. Delimeter .. "}([^{]-){" .. Delimeter .."([^}]*)}",
-        "{" .. Delimeter .. "}%2{" .. Delimeter .. "%1}"
+        "{%*}([^{]-){%*([^}]*)}",
+        "{%*}%2{%*%1}"
     }
     -- Convert "{**bar}" to "{*}bar{*}"
     {
-        "{" .. Delimeter .. Delimeter .. "([^}]+)}",
-        "{" .. Delimeter .. "}%1{" .. Delimeter .. "}"
+        "{%*%*([^}]+)}",
+        "{%*}%1{%*}"
     }
     -- Convert "{*}{*bar}" to "{**bar}"
     {
-        "{" .. Delimeter .. "}{".. Delimeter,
-        "{" .. Delimeter .. Delimeter
+        "{%*}{%*",
+        "{%*%*"
     }
 }
-ValidLineStarters = "%-%_"
-ValidLineNames = {Main, Alt, Overlap}
+validLineStarters = "%-%_"
+validLineNames = {'Main', 'Alt', 'Overlap'}
 -- Toggle line comment status if effect field matches three times the delimiter
-CommentPattern = "^" .. Delimeter .. Delimeter .. Delimeter .. "$"
-VerifyStyle = true
+commentPattern = "^%*%*%*$"
+verifyStyle = true
 
-EscapeChars = (Chars) ->
-    return string.gsub Chars, ".", "%%%1"
+escapeChars = (chars) ->
+    return string.gsub chars, ".", "%%%1"
 
-Explode = (Text, Pattern) -> -- I'm copying PHP function naming, god help me
-    Pos, Final = 0, {}
-    Lazy = -> -- haha this is awful i'll clean it up some day
-        return string.find Text, Pattern, Pos, true 
-    for Start, Stop in Lazy
-        Final[#Final + 1] = string.sub Text, Pos, Start - 1 
-        Pos = Stop + 1
-    Final[#Final + 1] = string.sub Text, Pos 
-    return Final
+explode = (text, pattern) -> -- I'm copying PHP function naming, god help me
+    pos, final = 0, {}
+    lazy = -> -- this is awful i'll clean it up some day
+        return string.find text, pattern, pos, true 
+    for start, stop in lazy
+        final[#final + 1] = string.sub text, pos, start - 1 
+        pos = stop + 1
+    final[#final + 1] = string.sub text, pos 
+    return final
 
-ValidateLine = (Style) ->
-    if VerifyStyle
-        for Name in *ValidLineNames
-            if Style\match "[" .. ValidLineStarters .. "]" .. Name
-                return true
-    else
+validateLine = (style) ->
+    if not verifyStyle
         return true
+    for name in ipairs validLineNames
+        if style\match "[" .. validLineStarters .. "]" .. name
+            return true
     return false
 
-UpdateDialog = ->
-    Dialog[2].text  = Settings.Delimeter
-    Dialog[4].value = Settings.VerifyStyle
-    Dialog[6].text  = Settings.LineStarters
-    Dialog[8].text  = Settings.LineNames
+updateDialog = ->
+    dialog[2].text  = settings.delimeter
+    dialog[4].value = settings.verifyStyle
+    dialog[6].text  = settings.lineStarters
+    dialog[8].text  = settings.lineNames
 
-UpdateVars = ->
-    Delimeter = "%" .. Settings.Delimeter
-    ValidLineStarters = EscapeChars string.gsub(Settings.LineStarters, ",", "")
-    ValidLineNames = Explode Settings.LineNames, ","
-    VerifyStyle = Settings.VerifyStyle
+updateVars = ->
+    delimeter = escapeChars settings.delimeter
+    -- These are roundabout and initially confusing, but it's necessary to avoid unswapping
+    swapPatterns = {
+        -- Convert "{*}foo{*bar}" to "{*}bar{*foo}", including {*}foo{*} to {*}{*foo}
+        {
+            "{" .. delimeter .. "}([^{]-){" .. delimeter .."([^}]*)}",
+            "{" .. delimeter .. "}%2{" .. delimeter .. "%1}"
+        }
+        -- Convert "{**bar}" to "{*}bar{*}"
+        {
+            "{" .. delimeter .. delimeter .. "([^}]+)}",
+            "{" .. delimeter .. "}%1{" .. delimeter .. "}"
+        }
+        -- Convert "{*}{*bar}" to "{**bar}"
+        {
+            "{" .. delimeter .. "}{".. delimeter,
+            "{" .. delimeter .. delimeter
+        }
+    }
+    validLineStarters = escapeChars string.gsub(settings.lineStarters, ",", "")
+    validLineNames = explode settings.lineNames, ","
+    -- Toggle line comment status if effect field matches three times the delimiter
+    commentPattern = "^" .. delimeter .. delimeter .. delimeter .. "$"
+    verifyStyle = settings.verifyStyle
 
-Replace = (Subs) ->
-    for LineNumber = 1, #Subs
-        Line = Subs[LineNumber]
+replace = (subs) ->
+    for lineNumber = 1, #subs
+        line = subs[lineNumber]
 
-        if Line.class == "dialogue"
-            Style = Line.style
-            Effect = Line.effect
+        if line.class == "dialogue"
+            style = line.style
+            effect = line.effect
             
-            if Effect\match CommentPattern
-                Line.comment = not Line.comment
+            if effect\match commentPattern
+                line.comment = not line.comment
 
-            if ValidateLine Style
-                for Pair in *SwapPatterns
-                    Line.text = Line.text\gsub Pair[1], Pair[2]
-            Subs[LineNumber] = Line
+            if validateLine style
+                for pair in ipairs swapPatterns
+                    line.text = line.text\gsub pair[1], pair[2]
+            subs[lineNumber] = line
 
-Swap = (Subs, Selected, Active) ->
-    Replace Subs
-    aegisub.set_undo_point "Swap Dialog"
+swap = (subs, selected, active) ->
+    replace subs
 
-Config = ->
-    Button, Results = aegisub.dialog.display Dialog
-    unless Button == false
-        Settings.Delimeter    = Results.Delimeter
-        Settings.VerifyStyle  = Results.VerifyStyle
-        Settings.LineStarters = Results.LineStarters
-        Settings.LineNames    = Results.LineNames
+config = ->
+    button, results = aegisub.dialog.display dialog
+    if button
+        settings.delimeter    = results.delimeter
+        settings.verifyStyle  = results.verifyStyle
+        settings.lineStarters = results.lineStarters
+        settings.lineNames    = results.lineNames
         ConfigHandler\write!
-        UpdateDialog!
-        UpdateVars!
+        updateDialog!
+        updateVars!
 
-UpdateDialog!
-UpdateVars!
+updateVars!
 
 DependencyControl\registerMacros {
-    { "Swap Dialog", "Performs the swap operations upon the script", Swap }
-    { "Configure", "Launches the configuration dialog", Config }
+    { "Swap Dialog", "Performs the swap operations upon the script", swap }
+    { "Configure", "Launches the configuration dialog", config }
 }

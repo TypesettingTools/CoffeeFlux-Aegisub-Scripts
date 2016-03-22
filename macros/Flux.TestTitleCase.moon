@@ -4,20 +4,19 @@ export script_author      = 'CoffeeFlux'
 export script_version     = '2.0.0'
 export script_namespace   = 'Flux.TitleCase'
 
-DependencyControl = require("l0.DependencyControl") {
-    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.TitleCase.moon"
-    feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+DependencyControl = require('l0.DependencyControl') {
+    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.TitleCase.moon'
+    feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {
-        "aegisub.re",
-        {"a-mo.LineCollection", version: "1.1.4", url: "https://github.com/TypesettingTools/Aegisub-Motion",
-         feed: "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"}
-        {"l0.ASSFoundation", version: "0.3.3", url: "https://github.com/TypesettingTools/ASSFoundation",
-         feed: "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"}
-        "unicode"
+        {'a-mo.LineCollection', version: '1.1.4', url: 'https://github.com/TypesettingTools/Aegisub-Motion',
+         feed: 'https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json'}
+        {'l0.ASSFoundation', version: '0.3.3', url: 'https://github.com/TypesettingTools/ASSFoundation',
+         feed: 'https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json'}
+        'unicode', 'aegisub.re'
     }
 }
 
-re, LineCollection, ASSFoundation, unicode = DependencyControl\requireModules!
+LineCollection, ASSFoundation, unicode, re = DependencyControl\requireModules!
 
 lowerCaseWords = {'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor', 'via', 'vs'}
 

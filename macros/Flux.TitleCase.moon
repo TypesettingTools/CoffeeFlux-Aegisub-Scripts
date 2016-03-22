@@ -1,15 +1,14 @@
 export script_name        = 'Title Case'
 export script_description = 'Applies English Title Case to selected lines'
 export script_author      = 'tophf'
-export script_version     = '1.3.2'
+export script_version     = '1.3.3'
 export script_namespace   = 'Flux.TitleCase'
 
-DependencyControl = require("l0.DependencyControl") {
-    url: "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.TitleCase.moon"
-    feed: "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+DependencyControl = require('l0.DependencyControl') {
+    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.TitleCase.moon'
+    feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {
-        "aegisub.re"
-        "unicode"
+        'aegisub.re', 'unicode'
     }
 }
 
