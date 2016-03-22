@@ -41,7 +41,7 @@ class ScrollHandler
 	new: =>
 		@scrollPositions = {}
 
-	checkHandle = =>
+	checkHandle: =>
 		if not @handle
 			@handle = {}
 			@handle.App = ffi.C.GetForegroundWindow!
