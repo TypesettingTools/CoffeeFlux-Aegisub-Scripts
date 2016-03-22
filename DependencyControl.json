@@ -16,19 +16,20 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.2.3",
-          "released": "2016-02-11",
+          "version": "1.3.0",
+          "released": "2016-03-22",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "23BB85EA6E887D840E853034868076E5E35E4F00"
+              "sha1": "ABAEEE305C727918426FC494DA68C423F70375E5"
             }
           ]
         }
       },
       "changelog": {
+        "1.3.0": ["Updated to use camelCase and single quotes"],
         "1.2.3": ["Fixed old dialog bug"],
         "1.2.2": ["Updated to reflect new directory structure"],
         "1.2.1": ["Fixed feed error"],
@@ -50,19 +51,20 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.3.2",
-          "released": "2016-02-28",
+          "version": "1.3.3",
+          "released": "2016-03-22",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "CED93DFFD35D36A2E6F88D77116B90316E2D8643"
+              "sha1": "987FC1507D63059DFBF54C3AE162367A79A7977B"
             }
           ]
         }
       },
       "changelog": {
+        "1.3.3": ["Updated to use single quotes"],
         "1.3.2": ["Removed unnecessary dependencies"],
         "1.3.1": ["Significant structural changes"],
         "1.1.3": ["Fixed feed error"],
@@ -80,19 +82,20 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.1.4",
-          "released": "2016-01-31",
+          "version": "1.1.5",
+          "released": "2016-03-22",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "F2784940129D5D59E160EF5233D6BA71A19DF397"
+              "sha1": "26CA040E6D2F8FA74A1282209820B99DEE2B8E01"
             }
           ]
         }
       },
       "changelog": {
+        "1.1.5": ["Updated to use single quotes"],
         "1.1.4": ["Updated to reflect new directory structure"],
         "1.1.3": ["Fixed feed error"],
         "1.1.2": ["Removed superfluous commas"],
@@ -109,19 +112,22 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "2.1.1",
-          "released": "2016-02-10",
+          "version": "2.3.0",
+          "released": "2016-03-22",
           "default": true,
+          "platforms": ["Windows-x86", "Windows-x64"],
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "DC9D2971BCBBCE86054BC06D0A01C1C958640BBC"
+              "sha1": "59ECC92F208E9B08E51D560C2A8D3963FBE55319"
             }
           ]
         }
       },
       "changelog": {
+        "2.3.0": ["Move platform check to DepCtrl"],
+        "2.2.2": ["General cleanup, updated to use single quotes"],
         "2.1.0": ["Added configuration"],
         "2.0.0": ["Rewritten to use the corresponding module"],
         "1.0.0": ["Script creation"]
@@ -140,14 +146,15 @@
       "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.0.0",
-          "released": "2016-01-31",
+          "version": "1.1.0",
+          "released": "2016-03-22",
           "default": true,
+          "platforms": ["Windows-x86", "Windows-x64"],
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "084122E83E8CEFF0BD3AF1F679A40680DFCA4F2E"
+              "sha1": "8D0729EAE5B484C8F5C9057E4D1F296FF050A8DA"
             }
           ],
           "requiredModules": [
@@ -158,6 +165,8 @@
         }
       },
       "changelog": {
+        "1.1.0": ["Move platform check to DepCtrl"],
+        "1.0.1": ["Updated to use single quotes"],
         "1.0.0": ["Module creation"]
       }
     }

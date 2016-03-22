@@ -1,7 +1,7 @@
 export script_name        = 'JumpScroll'
-export script_description = 'Save and load subtitle grid scrollbar positions on Windows'
+export script_description = 'Save and load subtitle grid scrollbar positions'
 export script_author      = 'CoffeeFlux'
-export script_version     = '2.2.0'
+export script_version     = '2.3.0'
 export script_namespace   = 'Flux.JumpScroll'
 
 DependencyControl = require('l0.DependencyControl') {
