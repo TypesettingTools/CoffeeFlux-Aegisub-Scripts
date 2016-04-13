@@ -37,11 +37,12 @@ class TPPPBase
 
 	--- Creates a class allowing for easy application of TPP functionality
 	-- The subs object is only passed at initialization, and thus cannot change until the instance is dereferenced
-	-- @param Subtitles the subtitles object from registration
-	-- @param Selection the selection object from registration
-	-- @param boolean only process selected lines
-	-- @param boolean only process uncommented lines
-	-- @param boolean mark modified lines in the effect field for later inspection
+	-- @tparam Subtitles subs the subtitles object from registration
+	-- @tparam Selection sel the selection object from registration
+	-- @tparam[opt={}] {Style, ...} styles table of styles to select, an empty table means all
+	-- @tparam[opt=true] boolean applyToSelection only process selected lines
+	-- @tparam[opt=false] boolean applyToComments only process uncommented lines
+	-- @tparam[opt=false] boolean markChanged mark modified lines in the effect field for later inspection
 	new: (subs, sel, styles = {}, applyToSelection = true, applyToComments = false, @markChanged = false) =>
 		-- consider making this pattern-based
 		checkStyle = (line) ->
@@ -62,11 +63,11 @@ class TPPPBase
 		@keyframes = aegisub.keyframes!
 
 	--- Adds lead-in and lead-out to the specified lines
-	-- @param number amount of lead-in, in milliseconds
-	-- @param number amount of lead-out, in milliseconds
-	-- @param boolean trim lead-in/out amounts in order to prevent overlap
-	-- @param boolean don't modify lines already snapped to keyframes
-	addLeadIn: (leadIn, leadOut, preventOverlap, stayOnKeyframes) =>
+	-- @tparam number leadIn amount of lead-in, in milliseconds
+	-- @tparam number leadOut amount of lead-out, in milliseconds
+	-- @tparam[opt=false] boolean preventOverlap trim lead-in/out amounts in order to prevent overlap
+	-- @tparam[opt=false] boolean stayOnKeyframes don't modify lines already snapped to keyframes
+	addLeadIn: (leadIn, leadOut, preventOverlap = false, stayOnKeyframes = false) =>
 		@lines\runCallback (lines, line, i) ->
 			prevLine, nextLine, startFrame, endFrame = getLineInfo line
 
@@ -148,6 +149,7 @@ class TPPPBase
 						checkCPS = (section) ->
 							length = #section.value
 							if findCPS line.start_time, line.end_time, length > maxCPS
+								-- Set back based on the direction moved
 								if endTime and findCPS line.start_time, origTime, length < maxCPS
 									line.end_time = origTime
 								else if findCPS origTime, line.end_time, length < maxCPS
