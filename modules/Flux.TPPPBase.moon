@@ -11,10 +11,13 @@ DependencyControl = require('l0.DependencyControl') {
          feed: 'https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json'}
         {'l0.ASSFoundation', version: '0.3.3', url: 'https://github.com/TypesettingTools/ASSFoundation',
          feed: 'https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json'}
+        {'l0.Functional', version: '0.3.0', url: 'https://github.com/TypesettingTools/ASSFoundation',
+         feed: 'https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json'}
     }
 }
 
-LineCollection, ASSFoundation = DependencyControl\requireModules!
+LineCollection, ASSFoundation, Functional = DependencyControl\requireModules!
+import list, math, string, table, unicode, util, re from Functional
 
 checkFor = (list, value) ->
 	for _, v in ipairs list
