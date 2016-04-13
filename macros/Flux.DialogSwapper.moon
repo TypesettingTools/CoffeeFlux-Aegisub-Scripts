@@ -7,8 +7,14 @@ export script_namespace   = 'Flux.DialogSwapper'
 DependencyControl = require('l0.DependencyControl') {
     url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.DialogSwapper.moon'
     feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
-    {}
+    {
+        {'l0.Functional', version: '0.3.0', url: 'https://github.com/TypesettingTools/ASSFoundation',
+         feed: 'https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json'}
+    }
 }
+
+Functional = DependencyControl\requireModules!
+import list, math, string, table, unicode, util, re from Functional
 
 ConfigHandler = DependencyControl\getConfigHandler {
     settings: {
@@ -113,16 +119,6 @@ verifyStyle = true
 escapeChars = (chars) ->
     return string.gsub chars, ".", "%%%1"
 
-explode = (text, pattern) -> -- I'm copying PHP function naming, god help me
-    pos, final = 0, {}
-    lazy = -> -- this is awful i'll clean it up some day
-        return string.find text, pattern, pos, true 
-    for start, stop in lazy
-        final[#final + 1] = string.sub text, pos, start - 1 
-        pos = stop + 1
-    final[#final + 1] = string.sub text, pos 
-    return final
-
 validateLine = (style) ->
     if not verifyStyle
         return true
@@ -158,7 +154,7 @@ updateVars = ->
         }
     }
     validLineStarters = escapeChars string.gsub(settings.lineStarters, ",", "")
-    validLineNames = explode settings.lineNames, ","
+    validLineNames = string.split settings.lineNames, ","
     -- Toggle line comment status if effect field matches three times the delimiter
     commentPattern = "^" .. delimeter .. delimeter .. delimeter .. "$"
     verifyStyle = settings.verifyStyle
