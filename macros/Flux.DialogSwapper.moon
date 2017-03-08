@@ -1,7 +1,7 @@
 export script_name        = 'Dialog Swapper'
 export script_description = 'Perform text swapping operations on a script'
 export script_author      = 'CoffeeFlux'
-export script_version     = '1.3.0'
+export script_version     = '1.4.0'
 export script_namespace   = 'Flux.DialogSwapper'
 
 DependencyControl = require('l0.DependencyControl') {
@@ -24,15 +24,6 @@ ConfigHandler = DependencyControl\getConfigHandler {
         lineNames: "Main,Alt,Overlap"
     }
 }
--- adjust for change in coding conventions
-if ConfigHandler.c.Settings
-    ConfigHandler.c.settings = {}
-    ConfigHandler.c.settings.delimeter = ConfigHandler.c.Settings.Delimeter
-    ConfigHandler.c.settings.verifyStyle = ConfigHandler.c.Settings.VerifyStyle
-    ConfigHandler.c.settings.lineStarters = ConfigHandler.c.Settings.LineStarters
-    ConfigHandler.c.settings.lineNames = ConfigHandler.c.Settings.LineNames
-    ConfigHandler.c.Settings = nil
-    ConfigHandler\write!
 settings = ConfigHandler.c.settings
 
 dialog = {
