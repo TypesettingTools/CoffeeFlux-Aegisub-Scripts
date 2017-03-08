@@ -4,7 +4,7 @@
 -- DO NOT USE ORG WITH HIGH VALUES OF FRX/FRY IF AT ALL POSSIBLE WHEN TYPESETTING TO AVOID THIS
 
 export script_name        = 'Scale Rotation Tags (Incorrectly)'
-export script_description = 'Will adjust frx/fry in lines post-upsample to be less terrible, though still wrong'
+export script_description = 'Adjust frx/fry in lines post-upsample to be less terrible, though still wrong'
 export script_author      = 'CoffeeFlux'
 export script_version     = '1.1.0'
 export script_namespace   = 'Flux.ScaleRotTags'
