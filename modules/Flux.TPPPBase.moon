@@ -20,7 +20,7 @@ LineCollection, ASSFoundation, Functional = DependencyControl\requireModules!
 import list, math, string, table, unicode, util, re from Functional
 
 checkFor = (list, value) ->
-	for _, v in ipairs list
+	for _, v in pairs list
 		if value == v
 			return true
 	return false
