@@ -123,7 +123,7 @@ Installation
 ------------
 
 1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
-2. Go to the toolbox, Install Script, locate Title Case and install it
+2. Go to the toolbox, Install Script, locate Selegator and install it
 
 Usage
 ------------
@@ -165,3 +165,29 @@ Configuration
 
 The Macro Length parameter determines how many save slots will be created when the script is started up. 
 **After changing this setting, you must restart your automation directory for it to take effect.**
+
+
+Scale Rotation Tags
+==========================
+
+This is intended to help make upsampling a script that uses rotation tags with \org less of a pain. It will scale the tags based on the video, **but will do so incorrectly.**
+It will, however, be closer than before, and might be good enough for small values.
+
+**DO NOT COMPLAIN TO ME ABOUT THE VALUES BEING INACCURATE**
+
+Installation
+------------
+
+1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
+2. Go to the toolbox, Install Script, locate Scale Rotation Tags Incorrectly and install it
+
+Usage
+------------
+
+Select the relevant lines and run the script. Not too difficult.
+
+Configuration
+------------
+
+Changes the value by which to scale the tag. The value is determined by `old_vertical_resolution / new_vertical_resolution`.
+The default, 0.6667 , is for going from 1280x720 to 1920x1080, which is what you probably want to do.
