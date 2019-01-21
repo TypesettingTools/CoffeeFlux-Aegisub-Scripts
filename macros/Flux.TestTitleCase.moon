@@ -16,11 +16,13 @@ DependencyControl = require('l0.DependencyControl') {
     }
 }
 
-LineCollection, ASSFoundation, unicode, re = DependencyControl\requireModules!
+LineCollection, ASS, unicode, re = DependencyControl\requireModules!
 
 lowerCaseWords = {'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor', 'via', 'vs'}
 
 -- I'm sorry tp7 ;_;
+-- Issues with these: all the slashes may not be properly escaped, this won't get the very first word in the line,
+-- won't properly handle em-dashes and probably hyphens etc
 firstWord = re.compile '(?:^|(?:[?.;!。~]))(?:\s|\\[Nnh]|{\w+})+[¿¡]?(\p{L})'
 everyWord = re.compile '(?:\\[Nnh]|\s|})(\p{L})'
 
