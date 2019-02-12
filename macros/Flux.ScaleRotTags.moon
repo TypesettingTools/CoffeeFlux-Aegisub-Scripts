@@ -60,4 +60,7 @@ scaleRotTags = (sub, sel) ->
         data\commit!
     lines\replaceLines!
 
-DependencyControl\registerMacros {scaleRotTags, config}
+DependencyControl\registerMacros {
+    {"Scale Rotation Tags", nil, scaleRotTags},
+    {"Config", nil, config}
+}
