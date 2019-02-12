@@ -56,7 +56,8 @@ scaleRotTags = (sub, sel) ->
         lazyfix = (tags) ->
             tags\modTags {'angle_x', 'angle_y'}, (tag) ->
                 ((tag + 180) % 360 - 180) * settings.scaleFactor
-        data\callback lazyfix, ASSFoundation.Section.Tags
+            return true
+        data\callback lazyfix, ASSFoundation.Section.Tag
         data\commit!
     lines\replaceLines!
 
