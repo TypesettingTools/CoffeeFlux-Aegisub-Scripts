@@ -162,7 +162,7 @@ replace = (subs) ->
                 line.comment = not line.comment
 
             if validateLine style
-                for pair in ipairs swapPatterns
+                for pair in *swapPatterns
                     line.text = line.text\gsub pair[1], pair[2]
             subs[lineNumber] = line
 
