@@ -1,7 +1,7 @@
 export script_name        = 'Line Separator'
 export script_description = 'Break apart consecutive lines'
 export script_author      = 'CoffeeFlux'
-export script_version     = '1.0.0'
+export script_version     = '1.1.0'
 export script_namespace   = 'Flux.LineSeparator'
 
 DependencyControl = require('l0.DependencyControl') {
@@ -44,13 +44,19 @@ updateDialog = ->
     dialog[2].value = settings.frames
 
 separate = (subs, sel, active) ->
+    -- Frame info is only available with video or timecodes loaded
+    unless aegisub.frame_from_ms 0
+        aegisub.log "Line Separator works in frames, so it needs video or timecodes to be loaded.\n"
+        aegisub.cancel!
+
     lines = LineCollection subs, sel
     lines\runCallback (lines, line, i) ->
-        unless i == #lines
+        unless i == #lines.lines
             endFrame = line.endFrame
             nextLineStartFrame = lines[i + 1].startFrame
             diff = settings.frames - (nextLineStartFrame - endFrame)
-            if diff <= settings.frames and diff > 0
+            -- Don't shorten a line to zero or negative duration
+            if diff <= settings.frames and diff > 0 and endFrame - diff > line.startFrame
                line.end_time = aegisub.ms_from_frame endFrame - diff
 
     lines\replaceLines!
