@@ -2,7 +2,7 @@ DependencyControl = require('l0.DependencyControl') {
 	name: 'ScrollHandler'
 	description: 'Library to save and load subtitle grid scrollbar positions'
 	author: 'CoffeeFlux'
-	version: '1.1.0'
+	version: '1.1.1'
 	moduleName: 'Flux.ScrollHandler'
     url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/modules/Flux.ScrollHandler.moon'
     feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
@@ -44,12 +44,12 @@ class ScrollHandler
 		@handle.App != 0
 
 	savePos: (key) =>
-		return unless checkHandle @
+		return unless @checkHandle!
 		@scrollPositions[key] = tonumber ffi.C.SendMessageA @handle.ScrollBar, msgs.SBM_GETPOS, 0, 0
 		-- aegisub.dialog.status_msg string.format 'Jumpscroll %s: saved position %d'\format key, @scrollpos[key]
 
 	loadPos: (key) =>
-		return unless @scrollPositions[key] and checkHandle @
+		return unless @scrollPositions[key] and @checkHandle!
 		ffi.C.SendMessageA @handle.SubsGrid, msgs.WM_VSCROLL, msgs.SB_THUMBPOSITION, @handle.ScrollBar
 		ffi.C.SendMessageA @handle.ScrollBar, msgs.SBM_SETPOS, @scrollPositions[key], 0
 		ffi.C.SendMessageA @handle.SubsGrid, msgs.WM_VSCROLL, msgs.SB_ENDSCROLL, @handle.ScrollBar

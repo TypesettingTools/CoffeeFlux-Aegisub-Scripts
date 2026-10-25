@@ -1,14 +1,14 @@
 export script_name        = 'JumpScroll'
 export script_description = 'Save and load subtitle grid scrollbar positions'
 export script_author      = 'CoffeeFlux'
-export script_version     = '2.3.0'
+export script_version     = '2.3.1'
 export script_namespace   = 'Flux.JumpScroll'
 
 DependencyControl = require('l0.DependencyControl') {
-    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.TitleCase.moon'
+    url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.JumpScroll.moon'
     feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {
-        {'Flux.ScrollHandler', version: '1.0.0', url: 'http://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts'}
+        {'Flux.ScrollHandler', version: '1.1.1', url: 'http://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts'}
     }
 }
 
