@@ -21,19 +21,20 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.4.0",
-          "released": "2017-03-08",
+          "version": "1.4.1",
+          "released": "2026-10-25",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "F9533DAE70F9062FBB3733E9766F80A407242DE2"
+              "sha1": "D75F738C9442A5170417808C3222BA2C6C56DC66"
             }
           ]
         }
       },
       "changelog": {
+        "1.4.1": ["Fixed swapping never running (or crashing with style verification off), fixed escaping of alphanumeric delimiters"],
         "1.4.0": ["Remove legacy settings conversion"],
         "1.3.0": ["Updated to use camelCase and single quotes"],
         "1.2.3": ["Fixed old dialog bug"],
@@ -57,20 +58,17 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.3.3",
-          "released": "2016-03-22",
+          "version": "1.4.0",
+          "released": "2026-10-25",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "987FC1507D63059DFBF54C3AE162367A79A7977B"
+              "sha1": "B72A6E30F0A5FD08C59C35BF3E7F64950BB39A4E"
             }
           ],
           "requiredModules": [
-            {
-              "moduleName": "aegisub.re"
-            },
             {
               "moduleName": "unicode"
             }
@@ -78,6 +76,7 @@
         }
       },
       "changelog": {
+        "1.4.0": ["Fixed minor words never being lowercased", "Fixed sentence detection across tag blocks and \\h", "Handle curly quotes, guillemets and inverted punctuation", "Skip drawings", "Always capitalize the last word and the word after a colon", "Preserve acronyms and words like iPhone unless the whole line is in caps", "Removed the aegisub.re dependency"],
         "1.3.3": ["Updated to use single quotes"],
         "1.3.2": ["Removed unnecessary dependencies"],
         "1.3.1": ["Significant structural changes"],
@@ -126,15 +125,15 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "2.3.0",
-          "released": "2016-03-22",
+          "version": "2.3.1",
+          "released": "2026-10-25",
           "default": true,
           "platforms": ["Windows-x86", "Windows-x64"],
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "59ECC92F208E9B08E51D560C2A8D3963FBE55319"
+              "sha1": "5CF6431B427ECD1D47E57DA8A33EAF0ECBED992B"
             }
           ],
           "requiredModules": [
@@ -142,13 +141,14 @@
               "moduleName": "Flux.ScrollHandler",
               "name": "ScrollHandler",
               "url": "@{baseUrl}",
-              "version": "1.0.0",
+              "version": "1.1.1",
               "feed": "@{feed:Flux}"
             }
           ]
         }
       },
       "changelog": {
+        "2.3.1": ["Require fixed ScrollHandler, fixed script URL"],
         "2.3.0": ["Move platform check to DepCtrl"],
         "2.2.2": ["General cleanup, updated to use single quotes"],
         "2.1.0": ["Added configuration"],
@@ -157,44 +157,37 @@
       }
     },
 
-    "Flux.ScaleRotTags": {
+    "Flux.LineSeparator": {
       "url": "@{baseUrl}#@{namespace}",
       "author": "CoffeeFlux",
-      "name": "Scale Rotation Tags (Incorrectly)",
-      "description": "Adjust frx/fry in lines post-upsample to be less terrible, though still wrong",
+      "name": "Line Separator",
+      "description": "Break apart consecutive lines",
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
           "version": "1.1.0",
-          "released": "2017-03-08",
+          "released": "2026-10-25",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "B20E4D01F97D863C79EB7ECFDFF4F876F047FE96"
+              "sha1": "53F9FA034E93F3AC96EF07B12EDE40D1B98E7966"
             }
           ],
           "requiredModules": [
             {
               "moduleName": "a-mo.LineCollection",
               "name": "Aegisub-Motion (LineCollection)",
-              "url": "https://github.com/torque/Aegisub-Motion",
-              "version": "1.1.4",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.2.0",
               "feed": "@{feed:a-mo}"
-            },
-            {
-              "moduleName": "l0.ASSFoundation",
-              "name": "ASSFoundation",
-              "url": "https://github.com/TypesettingTools/ASSFoundation",
-              "version": "0.3.3",
-              "feed": "@{feed:ASSFoundation}"
             }
           ]
         }
       },
       "changelog": {
-        "1.1.0": ["Add configuration capability"],
+        "1.1.0": ["Added to DepCtrl", "Require video or timecodes to be loaded", "Never shorten a line to zero or negative duration"],
         "1.0.0": ["Script creation"]
       }
     }
@@ -210,15 +203,15 @@
       "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.1.0",
-          "released": "2016-03-22",
+          "version": "1.1.1",
+          "released": "2026-10-25",
           "default": true,
           "platforms": ["Windows-x86", "Windows-x64"],
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "8D0729EAE5B484C8F5C9057E4D1F296FF050A8DA"
+              "sha1": "460BB9C0961F0D1E1808085C23D5A24B01310554"
             }
           ],
           "requiredModules": [
@@ -229,6 +222,7 @@
         }
       },
       "changelog": {
+        "1.1.1": ["Fixed crash when saving or loading positions"],
         "1.1.0": ["Move platform check to DepCtrl"],
         "1.0.1": ["Updated to use single quotes"],
         "1.0.0": ["Module creation"]
