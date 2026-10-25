@@ -6,7 +6,7 @@
 export script_name        = 'Scale Rotation Tags (Incorrectly)'
 export script_description = 'Adjust frx/fry in lines post-upsample to be less terrible, though still wrong'
 export script_author      = 'CoffeeFlux'
-export script_version     = '1.1.0'
+export script_version     = '1.1.1'
 export script_namespace   = 'Flux.ScaleRotTags'
 
 DependencyControl = require('l0.DependencyControl') {
@@ -53,11 +53,12 @@ scaleRotTags = (sub, sel) ->
     lines = LineCollection sub, sel
     lines\runCallback (lines, line, i) ->
         data = ASSFoundation\parse line
-        lazyfix = (tags) ->
-            tags\modTags {'angle_x', 'angle_y'}, (tag) ->
-                ((tag + 180) % 360 - 180) * settings.scaleFactor
-        data\callback lazyfix, ASSFoundation.Section.Tags
+        data\modTags {'angle_x', 'angle_y'}, (tag) ->
+            ((tag + 180) % 360 - 180) * settings.scaleFactor
         data\commit!
     lines\replaceLines!
 
-DependencyControl\registerMacros {scaleRotTags, config}
+DependencyControl\registerMacros {
+    { 'Scale Rotation Tags', 'Scales frx/fry in the selected lines', scaleRotTags }
+    { 'Configure', 'Launches the configuration dialog', config }
+}
