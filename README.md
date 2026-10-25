@@ -5,6 +5,7 @@ CoffeeFlux's Aegisub Scripts
  2. [Title Case](#title-case)
  3. [Selegator](#selegator)
  4. [JumpScroll](#jumpscroll)
+ 5. [Line Separator](#line-separator)
 
 ----------------------------------
 
@@ -167,27 +168,29 @@ The Macro Length parameter determines how many save slots will be created when t
 **After changing this setting, you must restart your automation directory for it to take effect.**
 
 
-Scale Rotation Tags
+Line Separator
 ==========================
 
-This is intended to help make upsampling a script that uses rotation tags with \org less of a pain. It will scale the tags based on the video, **but will do so incorrectly.**
-It will, however, be closer than before, and might be good enough for small values.
-
-**DO NOT COMPLAIN TO ME ABOUT THE VALUES BEING INACCURATE**
+Line Separator enforces a minimum gap between consecutive lines. If the gap between the end of a line and the start of the next selected line is shorter than the configured number of frames, the first line's end time is pulled back until the gap is exactly that long. Overlapping lines and lines that are already far enough apart are left alone, as are lines that would be shortened to nothing.
 
 Installation
 ------------
 
 1. Ensure that depctrl is functional (the easiest way is to use [line0's Aegisub builds](files.line0.eu/builds/Aegisub/))
-2. Go to the toolbox, Install Script, locate Scale Rotation Tags Incorrectly and install it
+2. Go to the toolbox, Install Script, locate Line Separator and install it
 
 Usage
 ------------
 
-Select the relevant lines and run the script. Not too difficult.
+Load video (or timecodes), select the lines to separate, and run Separate Lines. Lines are compared in the order they appear in the grid, so sort by time first if needed.
 
 Configuration
 ------------
 
-Changes the value by which to scale the tag. The value is determined by `old_vertical_resolution / new_vertical_resolution`.
-The default, 0.6667 , is for going from 1280x720 to 1920x1080, which is what you probably want to do.
+The Frames parameter sets the minimum gap between lines, in frames. The default is 3.
+
+
+Scale Rotation Tags
+==========================
+
+This script is no longer maintained or available through DependencyControl. To fix 3D rotation tags after resampling a script, use arch1t3cht's [Resample Perspective](https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts) instead, which handles them correctly.
