@@ -1,14 +1,14 @@
 export script_name        = 'Dialog Swapper'
 export script_description = 'Perform text swapping operations on a script'
 export script_author      = 'CoffeeFlux'
-export script_version     = '1.4.0'
+export script_version     = '1.4.1'
 export script_namespace   = 'Flux.DialogSwapper'
 
 DependencyControl = require('l0.DependencyControl') {
     url: 'https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/blob/master/macros/Flux.DialogSwapper.moon'
     feed: 'https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json'
     {
-        {'l0.Functional', version: '0.3.0', url: 'https://github.com/TypesettingTools/ASSFoundation',
+        {'l0.Functional', version: '0.3.0', url: 'https://github.com/TypesettingTools/Functional',
          feed: 'https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json'}
     }
 }
@@ -107,14 +107,19 @@ validLineNames = {'Main', 'Alt', 'Overlap'}
 commentPattern = "^%*%*%*$"
 verifyStyle = true
 
+-- Escape magic characters for use in a pattern; alphanumerics must be left alone since %a, %1, etc. are special
 escapeChars = (chars) ->
-    return string.gsub chars, ".", "%%%1"
+    return (string.gsub chars, "%W", "%%%0")
+
+-- Escape a literal for use in a gsub replacement string, where only % is special
+escapeRepl = (chars) ->
+    return (string.gsub chars, "%%", "%%%%")
 
 validateLine = (style) ->
     if not verifyStyle
         return true
-    for name in ipairs validLineNames
-        if style\match "[" .. validLineStarters .. "]" .. name
+    for _, name in ipairs validLineNames
+        if style\match "[" .. validLineStarters .. "]" .. escapeChars name
             return true
     return false
 
@@ -126,22 +131,23 @@ updateDialog = ->
 
 updateVars = ->
     delimeter = escapeChars settings.delimeter
+    replDelimeter = escapeRepl settings.delimeter
     -- These are roundabout and initially confusing, but it's necessary to avoid unswapping
     swapPatterns = {
         -- Convert "{*}foo{*bar}" to "{*}bar{*foo}", including {*}foo{*} to {*}{*foo}
         {
             "{" .. delimeter .. "}([^{]-){" .. delimeter .."([^}]*)}",
-            "{" .. delimeter .. "}%2{" .. delimeter .. "%1}"
+            "{" .. replDelimeter .. "}%2{" .. replDelimeter .. "%1}"
         }
         -- Convert "{**bar}" to "{*}bar{*}"
         {
             "{" .. delimeter .. delimeter .. "([^}]+)}",
-            "{" .. delimeter .. "}%1{" .. delimeter .. "}"
+            "{" .. replDelimeter .. "}%1{" .. replDelimeter .. "}"
         }
         -- Convert "{*}{*bar}" to "{**bar}"
         {
             "{" .. delimeter .. "}{".. delimeter,
-            "{" .. delimeter .. delimeter
+            "{" .. replDelimeter .. replDelimeter
         }
     }
     validLineStarters = escapeChars string.gsub(settings.lineStarters, ",", "")
@@ -162,7 +168,7 @@ replace = (subs) ->
                 line.comment = not line.comment
 
             if validateLine style
-                for pair in ipairs swapPatterns
+                for _, pair in ipairs swapPatterns
                     line.text = line.text\gsub pair[1], pair[2]
             subs[lineNumber] = line
 
