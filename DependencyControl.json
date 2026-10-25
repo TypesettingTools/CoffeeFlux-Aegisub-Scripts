@@ -58,14 +58,14 @@
       "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
       "channels": {
         "master": {
-          "version": "1.4.0",
+          "version": "1.4.1",
           "released": "2026-10-25",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "B72A6E30F0A5FD08C59C35BF3E7F64950BB39A4E"
+              "sha1": "BFA2668514A4AF5A882AD95D29114FCC178AE371"
             }
           ],
           "requiredModules": [
@@ -76,6 +76,7 @@
         }
       },
       "changelog": {
+        "1.4.1": ["Match how renderers split override blocks: nested braces, unclosed braces and negative \\p values"],
         "1.4.0": ["Fixed minor words never being lowercased", "Fixed sentence detection across tag blocks and \\h", "Handle curly quotes, guillemets and inverted punctuation", "Skip drawings", "Always capitalize the last word and the word after a colon", "Preserve acronyms and words like iPhone unless the whole line is in caps", "Removed the aegisub.re dependency"],
         "1.3.3": ["Updated to use single quotes"],
         "1.3.2": ["Removed unnecessary dependencies"],

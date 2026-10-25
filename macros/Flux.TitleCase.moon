@@ -1,7 +1,7 @@
 export script_name        = 'Title Case'
 export script_description = 'Applies English Title Case to selected lines'
 export script_author      = 'tophf'
-export script_version     = '1.4.0'
+export script_version     = '1.4.1'
 export script_namespace   = 'Flux.TitleCase'
 
 DependencyControl = require('l0.DependencyControl') {
@@ -50,8 +50,9 @@ splitToken = (token) ->
 -- fn returns the replacement for the word, or nil to leave it unchanged.
 mapWords = (s, fn) ->
     pending, drawing = '', false
-    s = ('{}' .. s)\gsub '(%b{})([^{]+)', (tag, text) ->
-        for scale in tag\gmatch '\\p(%d+)'
+    -- Like VSFilter and Aegisub, a block ends at the first closing brace, and drawing mode carries across blocks
+    s = ('{}' .. s)\gsub '({[^}]*})([^{]+)', (tag, text) ->
+        for scale in tag\gmatch '\\p(%-?%d+)'
             drawing = tonumber(scale) > 0
         if drawing
             return
@@ -77,6 +78,9 @@ titleCase = (subs, sel) ->
         with line = subs[i]
             -- Make line breaks and hard spaces count as whitespace
             s = .text\gsub('\\N', '\n')\gsub('\\n', '\r')\gsub('\\h', '\f')
+            -- Opening braces with no closing brace after them are displayed as text
+            lastClose = s\match('.*()}') or 0
+            s = s\sub(1, lastClose) .. s\sub(lastClose + 1)\gsub('{', '\v')
 
             -- Only flatten the case of the rest of each word if the whole line is in caps, to preserve acronyms etc. otherwise
             wordCount, allCaps = 0, true
@@ -101,7 +105,7 @@ titleCase = (subs, sel) ->
                     return
                 unicode.to_upper_case(first) .. rest
 
-            s = s\gsub('\n', '\\N')\gsub('\r', '\\n')\gsub('\f', '\\h')
+            s = s\gsub('\n', '\\N')\gsub('\r', '\\n')\gsub('\f', '\\h')\gsub('\v', '{')
             if s != .text
                 .text = s
                 subs[i] = line
